@@ -1,20 +1,24 @@
 <div class="col-md-8 mx-auto">
-  <h1 class="h3 fw-bold mb-4"><%= @memo.title %></h1>
-
-  <div class="card shadow-sm mb-4">
-    <div class="card-body">
-      <p><span class="fw-medium text-secondary">カテゴリ：</span><%= @memo.category %></p>
-      <p><span class="fw-medium text-secondary">参考元：</span><%= @memo.source %></p>
-      <p><span class="fw-medium text-secondary">勉強した日：</span><%= @memo.studied_at %></p>
-      <hr>
-      <p class="fw-medium text-secondary">メモ内容：</p>
-      <p class="whitespace-pre-wrap"><%= @memo.content %></p>
-    </div>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-bold">📖 <%= @memo.title %></h1>
+    <%= link_to "一覧に戻る", memos_path, class: "btn btn-outline-secondary rounded-pill px-4" %>
   </div>
 
-  <div class="d-flex gap-2 align-items-center">
-    <%= link_to "編集", edit_memo_path(@memo), class: "btn btn-warning" %>
-    <%= link_to "削除", @memo, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
-    <%= link_to "一覧に戻る", memos_path, class: "btn btn-link" %>
+  <div class="bg-white rounded-4 shadow p-4">
+    <div class="card border-0" style="border-left: 4px solid #4e9af1 !important; background-color: #f0f7ff;">
+      <div class="card-body">
+        <p><span class="fw-bold text-secondary">🗂 カテゴリ：</span><%= @memo.category.presence || "―" %></p>
+        <p><span class="fw-bold text-secondary">📚 参考元：</span><%= @memo.source.presence || "―" %></p>
+        <p><span class="fw-bold text-secondary">📅 勉強した日：</span><%= @memo.studied_at.presence || "―" %></p>
+        <hr>
+        <p class="fw-bold text-secondary">📝 メモ内容：</p>
+        <p class="whitespace-pre-wrap"><%= @memo.content %></p>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 mt-4">
+      <%= link_to "編集", edit_memo_path(@memo), class: "btn btn-warning rounded-pill px-4" %>
+      <%= link_to "削除", @memo, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger rounded-pill px-4" %>
+    </div>
   </div>
 </div>
