@@ -1,14 +1,18 @@
-<div class="max-w-3xl mx-auto">
-  <div class="flex justify-between items-center mb-6">
-    <h1 class="text-2xl font-bold">勉強メモ一覧</h1>
-    <%= link_to "新しいメモを作成", new_memo_path, class: "bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" %>
+<div class="col-md-8 mx-auto">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h3 fw-bold">勉強メモ一覧</h1>
+    <%= link_to "新しいメモを作成", new_memo_path, class: "btn btn-primary" %>
   </div>
 
   <% @memos.each do |memo| %>
-    <div class="border rounded p-4 mb-4 shadow-sm">
-      <h2 class="text-xl font-semibold"><%= link_to memo.title, memo, class: "text-blue-600 hover:underline" %></h2>
-      <p class="text-sm text-gray-500">カテゴリ：<%= memo.category %></p>
-      <p class="text-sm text-gray-500">勉強した日：<%= memo.studied_at %></p>
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h2 class="h5 card-title">
+          <%= link_to memo.title, memo, class: "text-decoration-none" %>
+        </h2>
+        <p class="card-text text-muted small mb-1">カテゴリ：<%= memo.category %></p>
+        <p class="card-text text-muted small">勉強した日：<%= memo.studied_at %></p>
+      </div>
     </div>
   <% end %>
 </div>

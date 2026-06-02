@@ -1,17 +1,20 @@
-<div class="max-w-2xl mx-auto">
-  <h1 class="text-2xl font-bold mb-4"><%= @memo.title %></h1>
+<div class="col-md-8 mx-auto">
+  <h1 class="h3 fw-bold mb-4"><%= @memo.title %></h1>
 
-  <div class="border rounded p-6 shadow-sm space-y-3">
-    <p><span class="font-medium text-gray-600">カテゴリ：</span><%= @memo.category %></p>
-    <p><span class="font-medium text-gray-600">参考元：</span><%= @memo.source %></p>
-    <p><span class="font-medium text-gray-600">勉強した日：</span><%= @memo.studied_at %></p>
-    <p><span class="font-medium text-gray-600">メモ内容：</span></p>
-    <p class="whitespace-pre-wrap"><%= @memo.content %></p>
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <p><span class="fw-medium text-secondary">カテゴリ：</span><%= @memo.category %></p>
+      <p><span class="fw-medium text-secondary">参考元：</span><%= @memo.source %></p>
+      <p><span class="fw-medium text-secondary">勉強した日：</span><%= @memo.studied_at %></p>
+      <hr>
+      <p class="fw-medium text-secondary">メモ内容：</p>
+      <p class="whitespace-pre-wrap"><%= @memo.content %></p>
+    </div>
   </div>
 
-  <div class="mt-6 flex gap-4">
-    <%= link_to "編集", edit_memo_path(@memo), class: "bg-yellow-400 text-white px-4 py-2 rounded hover:bg-yellow-500" %>
-    <%= link_to "削除", @memo, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" %>
-    <%= link_to "一覧に戻る", memos_path, class: "text-blue-500 hover:underline self-center" %>
+  <div class="d-flex gap-2 align-items-center">
+    <%= link_to "編集", edit_memo_path(@memo), class: "btn btn-warning" %>
+    <%= link_to "削除", @memo, data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+    <%= link_to "一覧に戻る", memos_path, class: "btn btn-link" %>
   </div>
 </div>
